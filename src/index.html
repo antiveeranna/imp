@@ -11,21 +11,22 @@
   <body class="bg-slate-200">
     <div class="border rounded-lg bg-gray-50 p-2 m-4 max-w-prose text-center">
       <h1 class="text-xl py-2">Inspiratsioon</h1>
-      <div id="inspiration" class="border p-2 text-4xl font-semibold bg-white border-rounder-lg">
-        Vajuta nuppu :)
-      </div>
+      <div
+        id="inspiration"
+        class="border p-2 text-4xl font-semibold bg-white border-rounder-lg"
+      ></div>
       <button
         id="location"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 m-4 rounded"
       >
-        Asukoht
+        Uus asukoht
       </button>
-      <button
+      <!--<button
         id="object"
         class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded"
       >
         Ese
-      </button>
+      </button>-->
     </div>
     <script>
       function rnd(max) {
@@ -34,13 +35,13 @@
       function pickLocation() {
         const choice = locations[rnd(locations.length)];
         document.getElementById("inspiration").innerHTML = choice;
-        console.log(choice);
       }
       (function () {
-        console.log("locations", locations);
         document
           .getElementById("location")
           .addEventListener("click", pickLocation);
+
+        pickLocation();
       })();
     </script>
   </body>

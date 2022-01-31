@@ -17,7 +17,7 @@
       ></div>
       <button
         id="location"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 m-4 rounded"
       >
         Uus asukoht
       </button>
@@ -35,10 +35,8 @@
       function pickLocation() {
         const choice = locations[rnd(locations.length)];
         document.getElementById("inspiration").innerHTML = choice;
-        //console.log(choice);
       }
       (function () {
-        //console.log("locations", locations);
         document
           .getElementById("location")
           .addEventListener("click", pickLocation);

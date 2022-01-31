@@ -2,12 +2,12 @@
   "name": "imp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "type": "module",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css -c ./tailwind.config.cjs"
   },
-  "author": "",
+  "author": "Anti Veeranna",
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.0.17"
