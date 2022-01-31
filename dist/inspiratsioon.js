@@ -87,7 +87,7 @@ const locations = [
     "tsirkus",
     "rõdu",
     "pank",
-    "seif",
+    "toasuurune seif",
     "pizzarestoran",
     "telk",
     "golfiväljak",
@@ -151,5 +151,15 @@ const locations = [
     "füüsikalabor",
     "geenilabor",
     "toidupoe turvaruum",
-    "lihaleti järjekord"
+    "lihaleti järjekord",
+    "helikopter",
+    "langevarjurite hüppelennuk",
+    "meeste riietusruum",
+    "naiste riietusruum",
+    "india restoran",
+    "raamatupood",
+    "teletorn",
+    "kirbuturg",
+    "suguvõsa kokkutulek",
+    "raketibaas"
 ];
