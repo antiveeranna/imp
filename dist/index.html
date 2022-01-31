@@ -4,43 +4,83 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Inspiratsioon improviseerijatele">
+    <meta name="description" content="Inspiratsioon improviseerijatele" />
     <link href="./output.css" rel="stylesheet" />
     <script src="./inspiratsioon.js"></script>
     <title>Inspiratsioon</title>
   </head>
   <body class="bg-slate-200">
-    <div class="border rounded-lg bg-gray-50 p-2 m-4 max-w-prose text-center">
-      <h1 class="text-xl py-2">Inspiratsioon</h1>
-      <div
-        id="inspiration"
-        class="border p-2 text-4xl font-semibold bg-white border-rounder-lg"
-      ></div>
-      <button
-        id="location"
-        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 m-4 rounded"
-      >
-        Uus asukoht
-      </button>
-      <!--<button
-        id="object"
-        class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-4 rounded"
-      >
-        Ese
-      </button>-->
+    <div class="border rounded-lg bg-gray-50 m-4 max-w-prose">
+      <h1 class="text-xl py-2 text-center">Inspiratsioon</h1>
+
+      <div class="flex flex-row gap-4 py-2 px-4 bg-blue-50 h-16 items-center">
+        <div class="flex-none w-40 m-auto">
+          <button
+            id="location-btn"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded w-full"
+          >
+            Uus asukoht
+          </button>
+        </div>
+        <div id="location"
+          class="grow p-2 text-2xl font-semibold text-blue-900"
+        ></div>
+      </div>
+
+      <div class="flex flex-row gap-4 py-2 px-4 bg-green-50 h-16 items-center">
+        <div class="flex-none w-40 m-auto">
+          <button
+            id="relation-btn"
+            class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded w-full"
+          >
+            Uus suhe
+          </button>
+        </div>
+        <div id="relation"
+          class="basis-3/4 p-2 text-2xl font-semibold h-full text-green-900"
+        ></div>
+      </div>
+
     </div>
     <script>
-      function rnd(max) {
-        return Math.floor(Math.random() * max);
-      }
+      let locationIndex = 0;
+      let relationIndex = 0;
+      shuffle(locations);
+      shuffle(relations);
+
       function pickLocation() {
-        const choice = locations[rnd(locations.length)];
-        document.getElementById("inspiration").innerHTML = choice;
+        document.getElementById("location").innerHTML =
+          locations[locationIndex];
+        locationIndex++;
+        if (locationIndex > locations.length - 1) {
+          locationIndex = 0;
+        }
       }
+
+      function pickRelation() {
+        document.getElementById("relation").innerHTML =
+          relations[relationIndex];
+        relationIndex++;
+        if (relationIndex > relations.length - 1) {
+          relationIndex = 0;
+        }
+      }
+
+      function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+
       (function () {
         document
-          .getElementById("location")
+          .getElementById("location-btn")
           .addEventListener("click", pickLocation);
+
+        document
+          .getElementById("relation-btn")
+          .addEventListener("click", pickRelation);
 
         pickLocation();
       })();
