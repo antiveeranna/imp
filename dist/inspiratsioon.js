@@ -9,7 +9,7 @@ const locations = [
     "arsti kabinet",
     "asteroid",
     "ateljee",
-    "aula",
+    "lõpuaktus",
     "aurik",
     "auto pagasiruum",
     "auto pakiruum",
@@ -24,7 +24,6 @@ const locations = [
     "bordell",
     "buss",
     "bussipeatus",
-    "demilitariseeritud tsoon",
     "direktori kabinet",
     "disko",
     "draakoni koobas",
@@ -256,9 +255,9 @@ const locations = [
     "toidupood",
     "tööriistapood",
     "tornkraana",
-    "tramm",
+    "Kopli tramm",
     "trammipeatus",
-    "troll",
+    "Mustamäe troll",
     "trollipeatus",
     "trooniruum",
     "troopiline saar",
@@ -285,6 +284,8 @@ const locations = [
     "vulkaanikraater"
 ];
 const relations = [
+    "abielumees ja armuke",
+    "abikaasad",
     "ajakirjanik ja intervjueeritav",
     "ajakirjanik ja vilepuhuja",
     "ämmaemand ja värske isa",
@@ -318,6 +319,7 @@ const relations = [
     "kunstikriitik ja koristaja",
     "kunstnik ja poliitik",
     "laulja ja armunud fänn",
+    "laulja ja manager",
     "lehm ja lüpsja",
     "lemmikloom ja omanik",
     "maadeavastajad",
@@ -330,6 +332,7 @@ const relations = [
     "nälgivad kunstnikud",
     "õde ja vend",
     "õpetaja ja lapsevanem",
+    "orelimängija ja alkohoolik",
     "päkapikk ja jõuluvana",
     "palgamõrvar ja taskuvaras",
     "pangaröövel ja teller",
@@ -350,7 +353,9 @@ const relations = [
     "pruut ja pulmaplaneerija",
     "psühholoog ja patsient",
     "pull ja lüpsja",
+    "raamatupidaja ja miljonär",
     "ralliauto juht ja kaardilugeja",
+    "relvavennad",
     "režissöör ja näitleja",
     "sepp ja õpipoiss",
     "silmaarst ja patsient",
@@ -368,5 +373,6 @@ const relations = [
     "tolliametnik ja salakaubavedaja",
     "tulnukas ja president",
     "turvamees ja pätt",
-    "ülekuulaja ja kahtlusalune"
+    "ülekuulaja ja kahtlusalune",
+    "ükssarvik ja salakütt"
 ];
