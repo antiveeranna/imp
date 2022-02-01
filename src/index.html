@@ -20,7 +20,7 @@
           >
             Asukoht
           </button>
-        <div id="location"
+        <div id="locations"
           class="grow p-2 text-2xl font-semibold text-blue-900"
         ></div>
       </div>
@@ -32,35 +32,43 @@
           >
             Suhe
           </button>
-        <div id="relation"
+        <div id="relations"
           class="basis-3/4 p-2 text-2xl font-semibold h-full text-green-900"
         ></div>
       </div>
 
+      <div class="flex flex-row bg-orange-50 items-center">
+        <button
+          id="attribute-btn"
+          class="flex-none w-24 bg-orange-600 hover:bg-orange-700 text-white font-semibold my-2 mx-4 py-2 rounded-lg"
+        >
+          Iseloom
+        </button>
+      <div id="attributes"
+        class="basis-3/4 p-2 text-2xl font-semibold h-full text-orange-900"
+      ></div>
+    </div>
+
     </div>
     <script>
-      let locationIndex = 0;
-      let relationIndex = 0;
-      
-      shuffle(locations);
-      shuffle(relations);
 
-      function pickLocation() {
-        document.getElementById("location").innerHTML =
-          locations[locationIndex];
-        locationIndex++;
-        if (locationIndex > locations.length - 1) {
-          locationIndex = 0;
-        }
+      let index = {
+        'locations': 0,
+        'relations': 0,
+        'attributes': 0
       }
 
-      function pickRelation() {
-        document.getElementById("relation").innerHTML =
-          relations[relationIndex];
-        relationIndex++;
-        if (relationIndex > relations.length - 1) {
-          relationIndex = 0;
-        }
+      shuffle(inspiration['locations']);
+      shuffle(inspiration['relations']);
+      shuffle(inspiration['attributes']);
+
+      function pick(section) {
+
+        document.getElementById(section).innerHTML =
+          inspiration[section][index[section] % inspiration[section].length];
+
+        index[section]++;
+
       }
 
       function shuffle(array) {
@@ -73,14 +81,20 @@
       (function () {
         document
           .getElementById("location-btn")
-          .addEventListener("click", pickLocation);
+          .addEventListener("click", () => pick('locations'));
 
         document
           .getElementById("relation-btn")
-          .addEventListener("click", pickRelation);
+          .addEventListener("click", () => pick('relations'));
 
-        pickLocation();
-        pickRelation();
+          document
+          .getElementById("attribute-btn")
+
+          .addEventListener("click", () => pick('attributes'));
+
+        pick('locations');
+        pick('relations');
+        pick('attributes');
       })();
     </script>
   </body>
