@@ -14,40 +14,77 @@
       <h1 class="text-xl py-2 text-center">Inspiratsioon</h1>
 
       <div class="flex flex-row bg-blue-50 items-center">
+
+
+          <div class="p-2 grow">
+            <section class="text-xs">Asukoht</section>
+            <section id="locations"
+          class="text-2xl font-semibold text-blue-900"
+        ></section>
+          </div>
           <button
-            id="location-btn"
-            class="flex-none w-24 bg-blue-600 hover:bg-blue-700 text-white font-semibold my-2 mx-4 py-2 rounded-lg"
-          >
-            Asukoht
-          </button>
-        <div id="locations"
-          class="grow p-2 text-2xl font-semibold text-blue-900"
-        ></div>
+          id="location-btn"
+          class="flex-none w-20 bg-blue-600 hover:bg-blue-700 text-white font-semibold my-2 mx-4 py-2 rounded-lg"
+        >
+          Uus
+        </button>
+
       </div>
 
       <div class="flex flex-row bg-green-50 items-center">
+
+          <div class="p-2 grow">
+            <section class="text-xs">Suhe</section>
+            <div id="relations"
+            class="text-2xl font-semibold h-full text-green-900"
+          ></div>
+          </div>
           <button
-            id="relation-btn"
-            class="flex-none w-24 bg-green-600 hover:bg-green-700 text-white font-semibold my-2 mx-4 py-2 rounded-lg"
-          >
-            Suhe
-          </button>
-        <div id="relations"
-          class="basis-3/4 p-2 text-2xl font-semibold h-full text-green-900"
-        ></div>
+          id="relation-btn"
+          class="flex-none w-20 bg-green-600 hover:bg-green-700 text-white font-semibold my-2 mx-4 py-2 rounded-lg"
+        >
+          Uus
+        </button>
+
       </div>
 
       <div class="flex flex-row bg-orange-50 items-center">
-        <button
-          id="attribute-btn"
-          class="flex-none w-24 bg-orange-600 hover:bg-orange-700 text-white font-semibold my-2 mx-4 py-2 rounded-lg"
-        >
-          Iseloom
-        </button>
+
+
+        <div class="p-2 grow">
+          <section class="text-xs">Iseloomuomadus</section>
+
       <div id="attributes"
-        class="basis-3/4 p-2 text-2xl font-semibold h-full text-orange-900"
+        class="text-2xl font-semibold h-full text-orange-900"
       ></div>
-    </div>
+        </div>
+
+        <button
+        id="attribute-btn"
+        class="flex-none w-20 bg-orange-600 hover:bg-orange-700 text-white font-semibold my-2 mx-4 py-2 rounded-lg"
+      >
+        Uus
+      </button>
+
+      </div>
+
+      <div class="flex flex-row bg-purple-50 items-center">
+
+
+        <div class="p-2 grow">
+          <section class="text-xs">2 iseloomuomadust + tegelast</section>
+
+      <div id="characters"
+        class="text-2xl font-semibold h-full text-purple-900"
+      ></div>
+      <button
+      id="characters-btn"
+      class="text-center flex-none w-20 bg-purple-600 hover:bg-purple-700 text-white font-semibold my-2 mx-4 py-2 rounded-lg"
+    >
+      Uus
+    </button>
+      </div>
+
 
     </div>
     <script>
@@ -55,12 +92,14 @@
       let index = {
         'locations': 0,
         'relations': 0,
-        'attributes': 0
+        'attributes': 0,
+        'characters': 0
       }
 
       shuffle(inspiration['locations']);
       shuffle(inspiration['relations']);
       shuffle(inspiration['attributes']);
+      shuffle(inspiration['characters']);
 
       function pick(section) {
 
@@ -68,7 +107,19 @@
           inspiration[section][index[section] % inspiration[section].length];
 
         index[section]++;
+      }
 
+      function characters () {
+        let char1 = inspiration['characters'][index['characters'] % inspiration['characters'].length];
+        index['characters']++;
+        let char2 = inspiration['characters'][index['characters'] % inspiration['characters'].length];
+        index['characters']++;
+        let attributes = inspiration['attributes'];
+        let attribute1 = attributes[Math.floor(Math.random()*attributes.length)];
+        let attribute2 = attributes[Math.floor(Math.random()*attributes.length)];
+
+        document.getElementById('characters').innerHTML =
+          attribute1 + ' ' + char1 + ' ja ' + attribute2 + ' ' + char2;
       }
 
       function shuffle(array) {
@@ -92,9 +143,15 @@
 
           .addEventListener("click", () => pick('attributes'));
 
+        document
+          .getElementById("characters-btn")
+
+          .addEventListener("click", () => characters());
+
         pick('locations');
         pick('relations');
         pick('attributes');
+        characters();
       })();
     </script>
   </body>
