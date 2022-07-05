@@ -6,22 +6,18 @@ const URL_PREFIX =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTGIiNMQtlntW17iD7oILAoZFHV9JkOuNMCtS5SV93a4p56VD1YgjJZVouYNAinQT6tij-P0-WTHMAH/pub?gid=";
 const URL_SUFIX = "&single=true&output=csv";
 
-//const LOCATIONS_URL =
-//  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTGIiNMQtlntW17iD7oILAoZFHV9JkOuNMCtS5SV93a4p56VD1YgjJZVouYNAinQT6tij-P0-WTHMAH/pub?gid=0&single=true&output=csv";
-
-//const RELATIONS_URL =
-//  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTGIiNMQtlntW17iD7oILAoZFHV9JkOuNMCtS5SV93a4p56VD1YgjJZVouYNAinQT6tij-P0-WTHMAH/pub?gid=1204171896&single=true&output=csv";
-
-//const LOCATION_SHEET = "0";
-//const RELATIONS_SHEET = "1204171896";
-
 const sheets = [
   { name: "locations", gid: "0" },
   { name: "relations", gid: "1204171896" },
+  { name: "attributes", gid: "1514613525" },
+  { name: "characters", gid: "1123232234"},
+  { name: "emotions", gid: "560011507"},
+  { name: "objects", gid: "1086079166"}
 ];
 
 async function updateDatabase() {
-  let out = "";
+  let out = "let inspiration = {};\n";
+  let json = {};
 
   for (let sheet of sheets) {
     console.log("Fetching and updating", sheet.name);
@@ -34,12 +30,17 @@ async function updateDatabase() {
       .map((el) => el.trim())
       .filter((el) => el);
 
-    console.log("Got", words.length - 1, sheet.name);
+    console.log("Got", words.length, sheet.name);
 
-    out = out + `const ${sheet.name} = ${JSON.stringify(words, null, 4)};\n`;
+    out =
+      out +
+      `inspiration['${sheet.name}'] = ${JSON.stringify(words, null, 4)};\n`;
+
+    json[sheet.name] = words;
   }
 
   await fs.writeFile("./dist/inspiratsioon.js", out);
+  await fs.writeFile("./dist/inspiratsioon.json", JSON.stringify(json, null, 4));
 }
 
 async function copyIndex() {
